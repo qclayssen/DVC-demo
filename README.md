@@ -1,12 +1,14 @@
 # DVC-demo
 
-This repository demonstrates a minimal [DVC](https://dvc.org/) workflow.
-It is inspired by Stian Lagstad's blog post about managing large test data
-with DVC and custom GitHub Action runners.
+This repository demonstrates a minimal [DVC](https://dvc.org/) workflow on
+Linux and macOS. It provides a tiny bioinformatics-style pipeline that
+converts a FASTQ file to a BAM-like file and then to a VCF-like file.
+
+The example is inspired by [Stian Lagstad's blog post](https://stianlagstad.no/2024/10/efficient-management-of-large-test-data-for-nextflow-pipelines-using-dvc-and-custom-github-actions-runners/).
 
 ## Setup
 
-Install the required tools:
+Install DVC (works on Linux and macOS):
 
 ```bash
 pip install dvc
@@ -21,19 +23,20 @@ dvc remote add -d localremote ./dvc_storage
 
 ## Pipeline
 
-The repository contains a small example pipeline which converts the contents
-of `data/raw.txt` to uppercase. The stage is defined in `dvc.yaml` and can be
-reproduced with:
+The pipeline has two stages defined in `dvc.yaml`:
+
+1. `fastq_to_bam` – converts `data/sample.fastq` to a simple BAM-like
+   representation stored in `data/sample.bam`.
+2. `bam_to_vcf` – converts the BAM file to a tiny VCF-like file
+   `data/sample.vcf`.
+
+Reproduce the pipeline with:
 
 ```bash
 dvc repro
 ```
 
-Data is tracked with DVC and stored in the `localremote` directory.
-
 ## Running the demo
 
-1. Modify `data/raw.txt` and run `dvc repro` to generate a new
-   `data/processed.txt`.
-2. Use `dvc push` to store the data in the configured remote.
-3. Use `dvc pull` to retrieve the data on a fresh clone.
+After running `dvc repro`, use `dvc push` to store the data in the
+configured remote and `dvc pull` to retrieve it in a fresh clone.

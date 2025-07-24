@@ -1,0 +1,5 @@
+outs:
+- md5: 72247785107368373d4752805711bc17
+  size: 54
+  hash: md5
+  path: sample.fastq

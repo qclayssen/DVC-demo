@@ -1,18 +1,34 @@
 schema: '2.0'
 stages:
-  process:
-    cmd: python src/process.py data/raw.txt data/processed.txt
+  fastq_to_bam:
+    cmd: python src/fastq_to_bam.py data/sample.fastq data/sample.bam
     deps:
-    - path: data/raw.txt
+    - path: data/sample.fastq
       hash: md5
-      md5: 6f5902ac237024bdd0c176cb93063dc4
-      size: 12
-    - path: src/process.py
+      md5: 72247785107368373d4752805711bc17
+      size: 54
+    - path: src/fastq_to_bam.py
       hash: md5
-      md5: ae196579fde6f89fd3c64164fa7e117b
-      size: 188
+      md5: 1177b7df7fdf46aab3c1149b86a90977
+      size: 315
     outs:
-    - path: data/processed.txt
+    - path: data/sample.bam
       hash: md5
-      md5: 2cad20c19a8eb9bb11a9f76527aec9bc
-      size: 12
+      md5: cc0993b508e0961f172d04dbedc87e4b
+      size: 41
+  bam_to_vcf:
+    cmd: python src/bam_to_vcf.py data/sample.bam data/sample.vcf
+    deps:
+    - path: data/sample.bam
+      hash: md5
+      md5: cc0993b508e0961f172d04dbedc87e4b
+      size: 41
+    - path: src/bam_to_vcf.py
+      hash: md5
+      md5: 817f4e2b7f028a69b3dd037cc4fbfe59
+      size: 448
+    outs:
+    - path: data/sample.vcf
+      hash: md5
+      md5: 8294424e7195883b1f1144b3d0d56599
+      size: 112
