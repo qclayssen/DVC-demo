@@ -5,8 +5,8 @@ stages:
     deps:
     - path: data/sample.fastq
       hash: md5
-      md5: 72247785107368373d4752805711bc17
-      size: 54
+      md5: 3185d14500ed42fd393a7b46ee644b43
+      size: 32
     - path: src/fastq_to_bam.py
       hash: md5
       md5: 1177b7df7fdf46aab3c1149b86a90977
@@ -14,15 +14,15 @@ stages:
     outs:
     - path: data/sample.bam
       hash: md5
-      md5: cc0993b508e0961f172d04dbedc87e4b
-      size: 41
+      md5: 97402250a88b1d86f25555ac0096070f
+      size: 27
   bam_to_vcf:
     cmd: python src/bam_to_vcf.py data/sample.bam data/sample.vcf
     deps:
     - path: data/sample.bam
       hash: md5
-      md5: cc0993b508e0961f172d04dbedc87e4b
-      size: 41
+      md5: 97402250a88b1d86f25555ac0096070f
+      size: 27
     - path: src/bam_to_vcf.py
       hash: md5
       md5: 817f4e2b7f028a69b3dd037cc4fbfe59
@@ -30,5 +30,5 @@ stages:
     outs:
     - path: data/sample.vcf
       hash: md5
-      md5: 8294424e7195883b1f1144b3d0d56599
-      size: 112
+      md5: cd14d439b5e0d5cff5abaf48f7c5a458
+      size: 106
