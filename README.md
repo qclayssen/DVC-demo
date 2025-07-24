@@ -1,6 +1,7 @@
 # DVC-demo
 
 This repository demonstrates a minimal [DVC](https://dvc.org/) workflow.
+
 It is inspired by [Stian Lagstad's blog post](https://stianlagstad.no/2024/10/efficient-management-of-large-test-data-for-nextflow-pipelines-using-dvc-and-custom-github-actions-runners/).
 
 It contains two tiny example pipelines:
@@ -10,7 +11,7 @@ It contains two tiny example pipelines:
 
 ## Setup
 
-Install DVC:
+Install the required tools:
 
 ```bash
 pip install dvc

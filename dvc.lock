@@ -2,20 +2,6 @@ schema: '2.0'
 stages:
   process:
     cmd: python src/process.py data/raw.txt data/processed.txt
-    deps:
-    - path: data/raw.txt
-      hash: md5
-      md5: 6f5902ac237024bdd0c176cb93063dc4
-      size: 12
-    - path: src/process.py
-      hash: md5
-      md5: ae196579fde6f89fd3c64164fa7e117b
-      size: 188
-    outs:
-    - path: data/processed.txt
-      hash: md5
-      md5: 2cad20c19a8eb9bb11a9f76527aec9bc
-      size: 12
   fastq_to_bam:
     cmd: python src/fastq_to_bam.py data/sample.fastq data/sample.bam
     deps:
