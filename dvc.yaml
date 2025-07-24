@@ -1,0 +1,15 @@
+stages:
+  fastq_to_bam:
+    cmd: python src/fastq_to_bam.py data/sample.fastq data/sample.bam
+    deps:
+      - data/sample.fastq
+      - src/fastq_to_bam.py
+    outs:
+      - data/sample.bam
+  bam_to_vcf:
+    cmd: python src/bam_to_vcf.py data/sample.bam data/sample.vcf
+    deps:
+      - data/sample.bam
+      - src/bam_to_vcf.py
+    outs:
+      - data/sample.vcf
